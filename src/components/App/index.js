@@ -1,9 +1,11 @@
-import * as React from 'react'
+import React from 'react'
+
 const styles = require('./index.css')
 
-const App = () =>
+const App = () => (
   <div className={styles.app}>
-    No content here. We only test the build process 😉
+    No content here. We only test the build process <spam role="img">😉</spam>
   </div>
+)
 
 export default App

@@ -1,0 +1,23 @@
+{
+    "extends": "airbnb",
+    "env": {
+      "browser": true,
+      "node": true
+    },
+    "settings": {
+      "import/resolver": {
+        "webpack": {
+          "config": "webpack.config.js"
+        }
+      }
+    },
+    "rules": {
+        "linebreak-style": [ "error", "unix" ],
+        "semi": ["error", "never"],
+        "react/jsx-filename-extension": [2, {"extensions": [".js", ".jsx"]}],
+        "react/jsx-one-expression-per-line": [0, { "allow": "none" }],
+        "jsx-a11y/accessible-emoji": 0,
+        "global-require": 0,
+        "comma-dangle": ["error", "never"]
+    }
+}

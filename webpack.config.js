@@ -7,14 +7,12 @@ const {
   entryPoint,
   env,
   group,
-  performance,
   setOutput,
   sourceMaps,
 
   // Shorthand setters
   babel,
   css,
-  devServer,
   extractText,
   uglify
 } = require('webpack-blocks')
