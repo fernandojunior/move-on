@@ -10,7 +10,7 @@ ReactDOM.render(<AppContainer><App /></AppContainer>, mountPoint)
 
 if (module.hot) {
   module.hot.accept('./App', () => {
-    const NewApp = require('./App').default
+    const NewApp = require('./components/App').default
 
     ReactDOM.render(
       <AppContainer><NewApp /></AppContainer>,
