@@ -52,7 +52,7 @@ const css = () => (context, { merge }) => merge({
     rules: [
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader']
       }
     ]
   }
