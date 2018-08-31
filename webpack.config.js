@@ -12,7 +12,6 @@ const {
 
   // Shorthand setters
   babel,
-  css,
   extractText,
   uglify
 } = require('webpack-blocks')
@@ -35,9 +34,34 @@ const productionConfig = () => group([
   ])
 ])
 
+const file = () => (context, { merge }) => merge({
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif|svg|woff2?|ttf|eot)$/,
+        use: [
+          { loader: 'file-loader', options: {} }
+        ]
+      }
+    ]
+  }
+})
+
+const css = () => (context, { merge }) => merge({
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      }
+    ]
+  }
+})
+
 module.exports = createConfig([
   babel(),
-  css.modules(),
+  css(),
+  file(),
   addPlugins([
     new HtmlWebpackPlugin({
       inject: true,
