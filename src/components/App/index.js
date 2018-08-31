@@ -1,10 +1,11 @@
 import React from 'react'
-
-const styles = require('./index.css')
+import { Button } from 'react-bootstrap'
+import './index.css'
 
 const App = () => (
-  <div className={styles.app}>
+  <div className="app">
     No content here. We only test the build process <spam role="img">😉</spam>
+    <Button bsStyle="primary" bsSize="large">test button</Button>
   </div>
 )
 
