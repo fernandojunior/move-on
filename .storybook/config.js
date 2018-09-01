@@ -1,10 +1,10 @@
 import { configure } from '@storybook/react'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-// const req = require.context('components', true, /.stories.js$/)
+const req = require.context('../src/components', true, /\.stories\.js$/)
 
 function loadStories() {
-  // req.keys().forEach(filename => req(filename))
-  require('../src/components/App/index.stories.js')
+  req.keys().forEach((filename) => req(filename))
 }
 
-configure(loadStories, module);
+configure(loadStories, module)
