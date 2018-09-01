@@ -21,3 +21,8 @@ To create a production build:
 ```sh
 npm run build
 ```
+
+To run the [storybook](https://github.com/storybooks/storybook) server (a development environment to browse UI components):
+```sh
+npm run storybook
+```
