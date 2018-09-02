@@ -8,23 +8,28 @@ const mockedMovie = JSON.parse('{"Title":"Blade Runner","Year":"1982","Rated":"R
 
 const Ratings = () => (
   <div>
-    *****
+    <div> ***** </div>
+    <div className="t5-secondary opacity75" style={{ lineHeight: '1.63' }}>
+      8.8/10
+    </div>
   </div>
 )
 
 const MovieSynopsis = ({ synopsis }) => (
   <div>
-    <h3>Sinopse</h3>
-    <p>
+    <div className="t3 opacity50">Sinopse</div>
+    <div className="t6 opacity75">
       { synopsis }
-    </p>
+    </div>
   </div>
 )
 
 const MovieContent = ({ Title, Year, Runtime, Genre, Plot }) => (
   <div className="MovieContent">
-    <h1> { Title } </h1>
-    <h2> { Year } | { Runtime } | { Genre } </h2>
+    <div className="t1"> { Title } </div>
+    <div className="t6 opacity75" style={{ lineHeight: '1.14' }}>
+      { Year } | { Runtime } | { Genre }
+    </div>
     <Ratings />
     <MovieSynopsis synopsis={Plot} />
   </div>
