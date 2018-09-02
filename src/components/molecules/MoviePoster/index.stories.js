@@ -6,5 +6,5 @@ const movie = JSON.parse('{"Title":"Blade Runner","Year":"1982","Rated":"R","Rel
 
 storiesOf('MoviePoster', module)
   .add('default', () => (
-    <MoviePoster id={movie.imdbID} title={movie.Title} year={movie.Year} url={movie.Poster} />
+    <MoviePoster {...movie} />
   ))

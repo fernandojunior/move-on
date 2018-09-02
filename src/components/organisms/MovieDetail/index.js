@@ -12,11 +12,11 @@ const Ratings = () => (
   </div>
 )
 
-const MovieSinopsis = ({ sinopsis }) => (
+const MovieSynopsis = ({ synopsis }) => (
   <div>
     <h3>Sinopse</h3>
     <p>
-      { sinopsis }
+      { synopsis }
     </p>
   </div>
 )
@@ -26,36 +26,28 @@ const MovieContent = ({ Title, Year, Runtime, Genre, Plot }) => (
     <h1> { Title } </h1>
     <h2> { Year } | { Runtime } | { Genre } </h2>
     <Ratings />
-    <MovieSinopsis sinopsis={Plot} />
+    <MovieSynopsis synopsis={Plot} />
   </div>
 )
 
-const DesktopDetail = ({ movie }) => {
-  const { imdbID, Title, Year, Poster } = movie
-  return (
-    <Grid fluid={false} className="DesktopDetail">
-      <Row>
-        <Col className="coluna" sm={12} md={12} lg={12}>
-          <MoviePoster id={imdbID} title={Title} year={Year}
-            url={Poster} width={480} height={720}
-          />
-          <MovieContent {...movie} />
-        </Col>
-      </Row>
-    </Grid>
-  )
-}
+const DesktopDetail = ({ movie }) => (
+  <Grid fluid={false} className="DesktopDetail">
+    <Row>
+      <Col className="coluna" sm={12} md={12} lg={12}>
+        <MoviePoster {...movie} width={480} height={720} />
+        <MovieContent {...movie} />
+      </Col>
+    </Row>
+  </Grid>
+)
 
 const MobileDetail = ({ movie }) => {
-  const { imdbID, Title, Year, Poster } = movie
   const width = (window.innerWidth > 0) ? window.innerWidth : screen.width // eslint-disable-line
   const height = (window.innerHeight > 0) ? window.innerHeight : screen.height // eslint-disable-line
   return (
     <div className="MobileDetail">
-      <MoviePoster id={imdbID} title={Title} year={Year} url={Poster}
-        width={width} height={height}
-      />
-      <MovieContent />
+      <MoviePoster {...movie} width={width} height={height} />
+      <MovieContent {...movie} />
     </div>
   )
 }
