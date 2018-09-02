@@ -1,0 +1,30 @@
+.DesktopDetail {
+	background: black;
+}
+
+.DesktopDetail .row {
+	margin: 0px;
+}
+
+.DesktopDetail, .DesktopDetail div[class*='col'] {
+	padding: 0px;
+}
+
+.DesktopDetail .MovieContent {
+	position: absolute;
+	top: 31%;
+	left: 480px;
+	margin-left: 48px;
+	margin-right: 48px;
+}
+
+.MobileDetail {
+	color: white;
+}
+
+.MobileDetail .MovieContent {
+	position: absolute;
+	top: 43%;
+	margin-left: 6.6%;
+	margin-right: 6.6%;
+}

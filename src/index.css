@@ -1,0 +1,46 @@
+/*html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: red
+}
+
+#root {
+	margin: 0 auto;
+    background-color: #e9eaed;
+    width: 100%;
+}
+*/
+
+body {
+	background: #696969;
+	color: #ffffff;
+}
+
+/*Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) { 
+	.container{
+	    max-width: 1122px;
+	}
+}
+
+/*Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) { 
+	.container{
+	    max-width: 1122px;
+	}
+}
+
+/*Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+	.container{
+	    max-width: 1122px;
+	}
+}
+
+/*Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+	.container{
+	    max-width: 1122px;
+	}
+}
