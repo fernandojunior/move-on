@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js",
     "lint": "eslint src webpack.config.js",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -s ./ -p 9001 -c .storybook"
   },
   "husky": {
     "hooks": {
