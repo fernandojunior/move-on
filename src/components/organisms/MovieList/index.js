@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { isMobile } from 'react-device-detect'
 import MoviePoster from '../../molecules/MoviePoster'
+import './index.css'
 
 const _mock_props = { // eslint-disable-line
   movies: [
@@ -33,19 +34,22 @@ export default class MovieList extends Component{ // eslint-disable-line
 
   render() {
     const colProps = isMobile ? { xs: 4 } : { sm: 2, md: 2, lg: 2 }
-
     const movies = _mock_props.movies.map(({ imdbID, Poster, Title, Year }) => (
       <Col {...colProps} key={Math.floor(Math.random() * 255)}>
-        <a href="#"><MoviePoster id={imdbID} url={Poster} title={Title} year={Year} responsive /></a>
+        <MoviePoster id={imdbID} url={Poster} title={Title} year={Year}
+          width={156} height={234} responsive
+        />
       </Col>
     ))
 
     return (
-      <Grid fluid={false}>
-        <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
-          {movies}
-        </Row>
-      </Grid>
+      <div className="MovieList">
+        <Grid fluid={false}>
+          <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
+            {movies}
+          </Row>
+        </Grid>
+      </div>
     )
   }
 }
