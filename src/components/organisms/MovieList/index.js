@@ -38,7 +38,7 @@ export default class MovieList extends Component{ // eslint-disable-line
 
     const movies = _mock_props.movies.map(movie => (
       <Col {...colProps} key={Math.floor(Math.random() * 255)}>
-        <MoviePoster {...movie} width={shape.width} height={shape.height} responsive />
+        <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
       </Col>
     ))
 

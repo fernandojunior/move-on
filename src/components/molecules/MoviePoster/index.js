@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { BrowserView } from 'react-device-detect'
 import { Image } from 'react-bootstrap'
+import './index.css'
 
 const imageStyle = {
   width: '100%',
@@ -8,24 +9,51 @@ const imageStyle = {
   objectFit: 'cover'
 }
 
-export default ({ imdbID, Title, Poster, Year, showInfo, width, height }) => {
-  imageStyle.width = width
-  imageStyle.height = height
+class MobilePoster extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { hover: false }
+  }
 
-  return (
-    <div>
-      <Image style={imageStyle} className="image" key={imdbID} src={Poster} responsive />
+  toggleHover(hover) {
+    this.setState({ hover })
+  }
 
-      { showInfo
-        && (
-          <BrowserView>
-            <div className="title">
-              <spam>{Title}</spam>
-              <spam>{Year}</spam>
-            </div>
-          </BrowserView>
+  render() {
+    const { imdbID, Title, Poster, Year, showInfo, width, height } = this.props
+    const { hover } = this.state
+
+    imageStyle.width = width
+    imageStyle.height = height
+
+    if (showInfo && hover) {
+      imageStyle.opacity = 0.5
+      imageStyle.borderadius = '3px'
+      imageStyle.backgroundColor = '#000000'
+    } else {
+      imageStyle.opacity = null
+      imageStyle.borderadius = null
+      imageStyle.backgroundColor = null
+    }
+
+    return (
+      <div className="MoviePoster" onMouseOver={() => this.toggleHover(true)}
+        onMouseLeave={() => this.toggleHover(false)}
+      >
+        <Image style={imageStyle} key={imdbID} src={Poster} responsive />
+
+        { showInfo && hover && (
+          <div className="PosterInfo">
+            <BrowserView>
+              <div className="t5">{Title}</div>
+              <div className="t7">{Year}</div>
+            </BrowserView>
+          </div>
         )
-      }
-    </div>
-  )
+        }
+      </div>
+    )
+  }
 }
+
+export default MobilePoster
