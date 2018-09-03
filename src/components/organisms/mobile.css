@@ -1,0 +1,50 @@
+#search-mobile {
+    width: 70%;
+    float: center;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background-position:left;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-color: black;
+    border-top-color: black;
+    border-left-color: black;
+    border-right-color: black;
+    border-bottom-color: rgba(216, 216, 216, 0.5);
+    border-bottom-style: solid;
+    box-shadow: 0 0 0 0;
+    border-radius: 0;
+}
+
+#search-mobile::-webkit-input-placeholder {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: italic;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+
+
+.ico {
+    background: url('../img/movie-on-logo.svg');
+    position: absolute;
+}
+
+#col1-mobile {
+    margin-left: 32px;
+    margin-right:32px;
+}
+
+#rectangle {
+    height: 10px;
+    background-color: red;
+    margin-left:32px;
+    margin-right:32px;
+    
+
+}

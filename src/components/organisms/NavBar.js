@@ -19,7 +19,12 @@ class NavBar extends Component {
           </Col>
           <Col xsHidden sm={4} className="noPadding">
             <div id="col2" className="column">
-              <FormControl id="search-input" placeholder="Que filme você procura?" />
+              <FormControl
+                id="search-input"
+                placeholder="Que filme você procura?"
+                onFocus={(e) => { e.target.placeholder = '' }}
+                onBlur={(e) => { e.target.placeholder = 'Que filme você procura?' }}
+              />
             </div>
           </Col>
           <Col xsHidden sm={4} className="noPadding">
@@ -30,8 +35,8 @@ class NavBar extends Component {
           </Col>
           <Col xs={6} smHidden mdHidden lgHidden className="noPadding">
             <div id="col4" className="column">
-              <Profile/>
-              <Search/>
+              <Profile />
+              <Search float="right" marginRight="10" marginLeft="0" />
             </div>
           </Col>
         </Row>

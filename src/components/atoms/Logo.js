@@ -5,7 +5,7 @@ import logoImage from '../img/movie-on-logo.svg'
 class Logo extends Component {
   render() {
     return (
-      <Image src={logoImage} style={{ paddingTop: 32, overflow: 'hidden' }} />
+      <Image src={logoImage} style={{ paddingTop: 32, objectFit: 'contain' }} />
     )
   }
 }
