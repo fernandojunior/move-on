@@ -18,6 +18,15 @@
 	margin-right: 48px;
 }
 
+.DesktopDetail .Rectangle {
+	position: absolute;
+	top: 0;
+	left: 360px;
+	width: 120px;
+	height: 720px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #000000);
+}
+
 .MobileDetail {
 	color: white;
 }
@@ -27,4 +36,14 @@
 	top: 43%;
 	margin-left: 6.6%;
 	margin-right: 6.6%;
+}
+
+
+.MovieRatings {
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.MovieSynopsis {
+	margin-top: 32px
 }
