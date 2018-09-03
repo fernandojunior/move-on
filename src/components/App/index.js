@@ -1,14 +1,23 @@
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import './index.css'
+import MovieList from '../organisms/MovieList'
+import MovieDetail from '../organisms/MovieDetail'
 import NavBar from '../organisms/NavBar'
+import './index.css'
 
-const App = () => (
-  <div className="app">
-
-    <NavBar />
+const test = () => ( // eslint-disable-line
+  <div>
+    <img src="/public/react.png" alt="React logo" />
     No content here. We only test the build process <spam role="img">😉</spam>
     <Button bsStyle="primary" bsSize="large">test button</Button>
+  </div>
+)
+
+const App = () => (
+  <div className="App">
+    <NavBar />
+    <MovieDetail />
+    <MovieList />
   </div>
 )
 

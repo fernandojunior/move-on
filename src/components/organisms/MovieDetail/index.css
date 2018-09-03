@@ -1,0 +1,49 @@
+.DesktopDetail {
+	background: black;
+}
+
+.DesktopDetail .row {
+	margin: 0px;
+}
+
+.DesktopDetail, .DesktopDetail div[class*='col'] {
+	padding: 0px;
+}
+
+.DesktopDetail .MovieContent {
+	position: absolute;
+	top: 31%;
+	left: 480px;
+	margin-left: 48px;
+	margin-right: 48px;
+}
+
+.DesktopDetail .Rectangle {
+	position: absolute;
+	top: 0;
+	left: 360px;
+	width: 120px;
+	height: 720px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #000000);
+}
+
+.MobileDetail {
+	color: white;
+}
+
+.MobileDetail .MovieContent {
+	position: absolute;
+	top: 43%;
+	margin-left: 6.6%;
+	margin-right: 6.6%;
+}
+
+
+.MovieRatings {
+	margin-top: 20px;
+	display: inline-block;
+}
+
+.MovieSynopsis {
+	margin-top: 32px
+}

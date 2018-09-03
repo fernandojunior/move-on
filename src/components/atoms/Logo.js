@@ -1,13 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Image } from 'react-bootstrap'
 import logoImage from '../img/movie-on-logo.svg'
 
-class Logo extends Component {
-  render() {
-    return (
-      <Image src={logoImage} style={{ paddingTop: 32, objectFit: 'contain' }} />
-    )
-  }
-}
-
-export default Logo
+export default () => (
+  <Image src={logoImage} style={{ paddingTop: 32, objectFit: 'contain' }} />
+)

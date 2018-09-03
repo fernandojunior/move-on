@@ -18,6 +18,7 @@ const {
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const developmentConfig = () => group([
   sourceMaps()
@@ -66,7 +67,10 @@ module.exports = createConfig([
     new HtmlWebpackPlugin({
       inject: true,
       template: './index.html'
-    })
+    }),
+    new CopyWebpackPlugin([{
+      from: './public/**/*'
+    }])
   ]),
   defineConstants({
     'process.env.NODE_ENV': process.env.NODE_ENV || 'development'

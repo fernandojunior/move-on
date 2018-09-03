@@ -1,0 +1,11 @@
+.MovieList div[class*='col'] * {
+	margin: 0 auto;
+}
+
+.MovieList .desktop {
+	padding: 15px 12px 15px 12px;
+}
+
+.MovieList .mobile {
+	padding: 5px 4px 5px 4px;
+}
