@@ -6,7 +6,7 @@ class Search extends Component {
   render() {
     const { float, marginRight, marginLeft } = this.props
     const style = {
-        float, marginLeft, marginRight, marginTop: 32, position:"relative"
+      float, marginLeft, marginRight, marginTop: 32, position: 'relative'
     }
     return (
       <Image
