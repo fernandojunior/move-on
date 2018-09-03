@@ -1,21 +1,17 @@
-#col1 {
+.column {
     background-color: black;
-    color:white;
     height: 88px;
+}
+
+#col1 {
     margin-left: 32px;
 }
 
-#col2 {
-    background-color: #000000;
-    color:white;
-    height: 88px;
-    text-align: center;
+#col3 {
+    margin-right: 32px;
 }
 
-#col3 {
-    background-color: black;
-    color:white;
-    height: 88px;
+#col4 {
     margin-right: 32px;
 }
 

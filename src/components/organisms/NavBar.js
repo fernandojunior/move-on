@@ -12,23 +12,23 @@ class NavBar extends Component {
       <Grid fluid>
         <Row>
           <Col xs={6} sm={4} className="noPadding">
-            <div id="col1">
+            <div id="col1" className="column">
               <Logo />
             </div>
           </Col>
           <Col xsHidden sm={4} className="noPadding">
-            <div id="col2">
+            <div id="col2" className="column">
               <FormControl id="search-input" placeholder="Que filme você procura?" />
             </div>
           </Col>
           <Col xsHidden sm={4} className="noPadding">
-            <div id="col3">
+            <div id="col3" className="column">
               <p id="dev-name"> Nome do Desenvolvedor</p>
               <Profile className="profile" />
             </div>
           </Col>
           <Col xs={6} smHidden mdHidden lgHidden className="noPadding">
-            <div id="col4">
+            <div id="col4" className="column">
                 So apareço no cel
             </div>
           </Col>

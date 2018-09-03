@@ -9,7 +9,7 @@ const Profile = () => (
       circle
       responsive
       style={{
-        width: 32, height: 32, float: 'right', marginRight: 20, marginTop: 28
+        width: 32, height: 32, float: 'right', marginRight: 10, marginTop: 28
       }}
     />
 
