@@ -1,0 +1,11 @@
+.PosterInfo {
+    position: absolute;
+    bottom: 32px;
+    padding-left: 16px;
+    line-height: 1.25;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.PosterInfo .t5, .PosterInfo .t7 {
+    line-height: 1.25;
+}

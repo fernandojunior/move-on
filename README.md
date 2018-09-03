@@ -17,12 +17,17 @@ To run the webpack dev server:
 npm start
 ```
 
+To run the [storybook](https://github.com/storybooks/storybook) server (a development environment to browse UI components):
+```sh
+npm run storybook
+```
+
 To create a production build:
 ```sh
 npm run build
 ```
 
-To run the [storybook](https://github.com/storybooks/storybook) server (a development environment to browse UI components):
+To serve the build directory using a Python SimpleHTTPServer:
 ```sh
-npm run storybook
+npm run serve
 ```
