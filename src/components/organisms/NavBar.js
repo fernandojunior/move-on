@@ -5,6 +5,7 @@ import {
 import './nav.css'
 import Profile from '../atoms/Profile'
 import Logo from '../atoms/Logo'
+import Search from '../atoms/Search'
 
 class NavBar extends Component {
   render() {
@@ -29,12 +30,11 @@ class NavBar extends Component {
           </Col>
           <Col xs={6} smHidden mdHidden lgHidden className="noPadding">
             <div id="col4" className="column">
-                So apareço no cel
+              <Profile/>
+              <Search/>
             </div>
           </Col>
-
         </Row>
-
       </Grid>
 
     )
