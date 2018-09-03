@@ -1,41 +1,43 @@
 import React, { Component } from 'react'
 import {
-  Nav, Navbar, NavItem, NavDropdown, MenuItem
+  Grid, Row, Col, FormControl
 } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import './nav.css'
+import Profile from '../atoms/Profile'
+import Logo from '../atoms/Logo'
 
-
-class NavTest extends Component {
+class NavBar extends Component {
   render() {
     return (
-      <Navbar inverse collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#">React-Bootstrap</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} href="#">Link</NavItem>
-            <NavItem eventKey={2} href="#">Link</NavItem>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
-          </Nav>
-          <Nav pullRight>
-            <NavItem eventKey={1} href="#">Link Right</NavItem>
-            <NavItem eventKey={2} href="#">Link Right</NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <Grid fluid >
+        <Row>
+            <Col xs={6} sm={4} className="noPadding">
+              <div id="col1">
+                <Logo/>
+              </div>
+            </Col>
+            <Col xsHidden sm={4} className="noPadding">
+              <div id="col2">
+                <FormControl id="search-input" placeholder="Que filme você procura?"/>
+              </div>
+            </Col>
+            <Col xsHidden sm={4} className="noPadding">
+              <div id="col3">
+                <p id="dev-name"> Nome do Desenvolvedor</p>
+                <Profile className="profile"/>
+              </div></Col>
+            <Col xs={6} smHidden mdHidden lgHidden className="noPadding">
+              <div id="col4">
+                So apareço no cel
+              </div>
+            </Col>
+
+          </Row>
+
+      </Grid>
 
     )
   }
 }
 
-export default NavTest
+export default NavBar
