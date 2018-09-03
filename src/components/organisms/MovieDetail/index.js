@@ -2,60 +2,93 @@ import React from 'react'
 import { BrowserView, MobileView } from 'react-device-detect'
 import { Grid, Row, Col } from 'react-bootstrap'
 import MoviePoster from '../../molecules/MoviePoster'
+import Icon from '../../atoms/Icon'
 import './index.css'
 
 const mockedMovie = JSON.parse('{"Title":"Blade Runner","Year":"1982","Rated":"R","Released":"25 Jun 1982","Runtime":"117 min","Genre":"Sci-Fi, Thriller","Director":"Ridley Scott","Writer":"Hampton Fancher (screenplay), David Webb Peoples (screenplay), Philip K. Dick (novel)","Actors":"Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos","Plot":"A blade runner must pursue and terminate four replicants who stole a ship in space, and have returned to Earth to find their creator.","Language":"English, German, Cantonese, Japanese, Hungarian, Arabic","Country":"USA, Hong Kong","Awards":"Nominated for 2 Oscars. Another 11 wins & 16 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BNzQzMzJhZTEtOWM4NS00MTdhLTg0YjgtMjM4MDRkZjUwZDBlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"8.2/10"},{"Source":"Rotten Tomatoes","Value":"90%"},{"Source":"Metacritic","Value":"89/100"}],"Metascore":"89","imdbRating":"8.2","imdbVotes":"594,601","imdbID":"tt0083658","Type":"movie","DVD":"27 Aug 1997","BoxOffice":"N/A","Production":"Warner Bros. Pictures","Website":"N/A","Response":"True"}') // eslint-disable-line
 
 const Ratings = () => (
-  <div>
-    *****
+  <div className="MovieRatings">
+    <div style={{ float: 'left' }}>
+      <Icon icon="star-filled" height="24px" />
+      <Icon icon="star-filled" height="24px" />
+      <Icon icon="star-filled" height="24px" />
+      <Icon icon="star-filled" height="24px" />
+      <Icon icon="star-hollow" height="24px" />
+    </div>
+    <div className="t5-secondary opacity75" style={{ marginLeft: '16px', float: 'left' }}>
+      8.8/10
+    </div>
   </div>
 )
 
-const MovieSinopsis = ({ sinopsis }) => (
-  <div>
-    <h3>Sinopse</h3>
-    <p>
-      { sinopsis }
-    </p>
+const MovieSynopsis = ({ synopsis }) => (
+  <div className="MovieSynopsis">
+    <div className="t3 opacity50 title">Sinopse</div>
+    <div className="t6 opacity75" style={{ marginTop: '16px' }}>
+      { synopsis }
+    </div>
   </div>
 )
 
 const MovieContent = ({ Title, Year, Runtime, Genre, Plot }) => (
   <div className="MovieContent">
-    <h1> { Title } </h1>
-    <h2> { Year } | { Runtime } | { Genre } </h2>
+    <div className="t1"> { Title } </div>
+    <div className="t6 opacity75" style={{ marginTop: '8px', lineHeight: 1.14 }}>
+      { Year } | { Runtime } | { Genre }
+    </div>
     <Ratings />
-    <MovieSinopsis sinopsis={Plot} />
+    <MovieSynopsis synopsis={Plot} />
   </div>
 )
 
-const DesktopDetail = ({ movie }) => {
-  const { imdbID, Title, Year, Poster } = movie
-  return (
-    <Grid fluid={false} className="DesktopDetail">
-      <Row>
-        <Col className="coluna" sm={12} md={12} lg={12}>
-          <MoviePoster id={imdbID} title={Title} year={Year}
-            url={Poster} width={480} height={720}
-          />
-          <MovieContent {...movie} />
-        </Col>
-      </Row>
-    </Grid>
-  )
-}
+const DesktopDetail = ({ movie }) => (
+  <Grid fluid={false} className="DesktopDetail">
+    <Row>
+      <Col sm={12} md={12} lg={12}>
+        <MoviePoster {...movie} width={480} height={720} />
+        <div className="Rectangle" />
+        <MovieContent {...movie} />
+      </Col>
+    </Row>
+  </Grid>
+)
 
 const MobileDetail = ({ movie }) => {
-  const { imdbID, Title, Year, Poster } = movie
   const width = (window.innerWidth > 0) ? window.innerWidth : screen.width // eslint-disable-line
   const height = (window.innerHeight > 0) ? window.innerHeight : screen.height // eslint-disable-line
+
+  const rec1 = {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: height * (120 / 712),
+    background: '#000000'
+  }
+
+  const rec2 = {
+    position: 'absolute',
+    bottom: rec1.height,
+    width: '100%',
+    height: height * (432 / 712),
+    backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000)'
+  }
+
+  const rec3 = {
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    height: height - (rec1.height + rec2.height),
+    backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0), #000000)'
+  }
+
   return (
-    <div className="MobileDetail">
-      <MoviePoster id={imdbID} title={Title} year={Year} url={Poster}
-        width={width} height={height}
-      />
-      <MovieContent />
+    <div className="MobileDetail" style={{ width, height }}>
+      <MoviePoster {...movie} width={width} height={height} />
+      <div style={rec1} />
+      <div style={rec2} />
+      <div style={rec3} />
+      <MovieContent {...movie} />
     </div>
   )
 }
