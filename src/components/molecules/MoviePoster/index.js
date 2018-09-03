@@ -8,26 +8,22 @@ const imageStyle = {
   objectFit: 'cover'
 }
 
-export default ({ id, title, url, year, showInfo = false, width = 480, height = 720 }) => {
-  const moviePosterStyle = {
-    width,
-    height
-  }
-
+export default ({ imdbID, Title, Poster, Year, showInfo, width, height }) => {
   imageStyle.width = width
+  imageStyle.height = height
 
   return (
-    <div className="MoviePoster" style={moviePosterStyle}>
-      <Image style={imageStyle} className="image" key={id} src={url} responsive />
+    <div>
+      <Image style={imageStyle} className="image" key={imdbID} src={Poster} responsive />
 
       { showInfo
         && (
-        <BrowserView>
-          <div className="title">
-            <spam>{title}</spam>
-            <spam>{year}</spam>
-          </div>
-        </BrowserView>
+          <BrowserView>
+            <div className="title">
+              <spam>{Title}</spam>
+              <spam>{Year}</spam>
+            </div>
+          </BrowserView>
         )
       }
     </div>

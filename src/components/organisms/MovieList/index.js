@@ -33,12 +33,12 @@ const _mock_props = { // eslint-disable-line
 export default class MovieList extends Component{ // eslint-disable-line
 
   render() {
-    const colProps = isMobile ? { xs: 4 } : { sm: 2, md: 2, lg: 2 }
-    const movies = _mock_props.movies.map(({ imdbID, Poster, Title, Year }) => (
+    const shape = isMobile ? { width: '108px', height: '162px' } : { width: '156px', height: '234px' }
+    const colProps = isMobile ? { className: 'mobile', xs: 4 } : { className: 'desktop', sm: 2, md: 2, lg: 2 }
+
+    const movies = _mock_props.movies.map(movie => (
       <Col {...colProps} key={Math.floor(Math.random() * 255)}>
-        <MoviePoster id={imdbID} url={Poster} title={Title} year={Year}
-          width={156} height={234} responsive
-        />
+        <MoviePoster {...movie} width={shape.width} height={shape.height} responsive />
       </Col>
     ))
 
