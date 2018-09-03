@@ -57,9 +57,37 @@ const DesktopDetail = ({ movie }) => (
 const MobileDetail = ({ movie }) => {
   const width = (window.innerWidth > 0) ? window.innerWidth : screen.width // eslint-disable-line
   const height = (window.innerHeight > 0) ? window.innerHeight : screen.height // eslint-disable-line
+
+  const rec1 = {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: height * (120 / 712),
+    background: '#000000'
+  }
+
+  const rec2 = {
+    position: 'absolute',
+    bottom: rec1.height,
+    width: '100%',
+    height: height * (432 / 712),
+    backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000)'
+  }
+
+  const rec3 = {
+    position: 'absolute',
+    top: 0,
+    width: '100%',
+    height: height - (rec1.height + rec2.height),
+    backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0), #000000)'
+  }
+
   return (
-    <div className="MobileDetail">
+    <div className="MobileDetail" style={{ width, height }}>
       <MoviePoster {...movie} width={width} height={height} />
+      <div style={rec1} />
+      <div style={rec2} />
+      <div style={rec3} />
       <MovieContent {...movie} />
     </div>
   )
