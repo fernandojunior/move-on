@@ -1,11 +1,8 @@
-// import { actionTypes } from './actions'
+import { combineReducers } from 'redux'
+import movieStore from './movies'
 
-function reducer(state = null, action) { // eslint-disable-line
-  // switch (action.type) {
-  //   default:
-  //     return state
-  // }
-  return state
+const reducers = {
+  movieStore
 }
 
-export default reducer
+export default combineReducers(reducers)

@@ -31,7 +31,7 @@ const _mock_props = { // eslint-disable-line
   ]
 }
 
-export default () => {
+export default ({ movies, title }) => {
   const shape = isMobile ? { width: '108px', height: '162px' } : { width: '156px', height: '234px' }
   const colProps = isMobile ? { className: 'mobile', xs: 4 } : { className: 'desktop', sm: 2, md: 2, lg: 2 }
 
@@ -47,7 +47,7 @@ export default () => {
     </Link>
   )
 
-  const movies = _mock_props.movies.map(movie => (
+  const movieViews = (movies || []).map(movie => (
     <Col {...colProps} key={Math.floor(Math.random() * 255)}>
       <BrowserView>
         <DesktopMovieLink movie={movie} shape={shape} />
@@ -64,10 +64,10 @@ export default () => {
         <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
           <Col xs={12}>
             <div className="t3 opacity50">
-              Tendency
+              {(title || 'Tendency')}
             </div>
           </Col>
-          {movies}
+          {movieViews}
         </Row>
       </Grid>
     </div>

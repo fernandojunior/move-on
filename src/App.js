@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import HomePage from './components/pages/HomePage'
+import HomePage from './pages/HomePage'
 import MovieDetail from './components/organisms/MovieDetail'
 
 const MovieDetailContainer = () => {
