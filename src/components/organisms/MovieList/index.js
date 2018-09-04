@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Grid, Row, Col } from 'react-bootstrap'
-import { isMobile } from 'react-device-detect'
+import { Modal, Grid, Row, Col } from 'react-bootstrap'
+import { isMobile, BrowserView, MobileView } from 'react-device-detect'
 import MoviePoster from '../../molecules/MoviePoster'
+import MovieDetail from '../MovieDetail'
 import './index.css'
 
 const _mock_props = { // eslint-disable-line
@@ -30,23 +31,67 @@ const _mock_props = { // eslint-disable-line
   ]
 }
 
-export default class MovieList extends Component{ // eslint-disable-line
+export default class MovieList extends Component {
+  constructor(props, context) {
+    super(props, context)
+
+    this.state = {
+      show: false
+    }
+  }
+
+  showMovieModal(movie) {
+    this.setState({ movie, show: true })
+  }
+
+  handleClose() {
+    this.setState({ show: false })
+  }
 
   render() {
     const shape = isMobile ? { width: '108px', height: '162px' } : { width: '156px', height: '234px' }
     const colProps = isMobile ? { className: 'mobile', xs: 4 } : { className: 'desktop', sm: 2, md: 2, lg: 2 }
 
+    const MovieModal = () => {
+      const { show, movie } = this.state
+      return (
+        <Modal show={show} onHide={() => this.handleClose()} dialogClassName="MovieModal">
+          <div>
+            <MovieDetail movie={movie} onClose={() => this.handleClose()} />
+          </div>
+        </Modal>
+      )
+    }
+
+    const DesktopMovieLink = ({ movie }) => (
+      <a href="#" onClick={() => this.showMovieModal(movie)}>
+        <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
+      </a>
+    )
+
+    const MobileMovieLink = ({ movie }) => (
+      <a href="#">
+        <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
+      </a>
+    )
+
     const movies = _mock_props.movies.map(movie => (
       <Col {...colProps} key={Math.floor(Math.random() * 255)}>
-        <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
+        <BrowserView>
+          <DesktopMovieLink movie={movie} shape={shape} />
+        </BrowserView>
+        <MobileView>
+          <MobileMovieLink movie={movie} shape={shape} />
+        </MobileView>
       </Col>
     ))
 
     return (
       <div className="MovieList">
+        <MovieModal />
         <Grid fluid={false}>
           <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
-            <Col sm={12}>
+            <Col xs={12}>
               <div className="t3 opacity50">
                 Tendency
               </div>

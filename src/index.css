@@ -148,3 +148,16 @@ body {
 	color: #ffffff;
 	text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+.MovieModal {
+	margin-top: 5%;
+	margin-right: 50%;
+}
+
+.MovieModal .modal-content {
+	background: transparent !important;
+}
+
+.fade {
+	background: rgba(51, 51, 51, 0.57);
+}

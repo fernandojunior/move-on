@@ -25,7 +25,10 @@ export default () => (
           </div>
         </Col>
         <Col xs={6} smHidden mdHidden lgHidden>
-          <div style={{ float: 'right' }}>
+          <div style={{ display: 'inline-block', float: 'right' }}>
+            <div className="SearchIcon" style={{ float: 'left', paddingRight: '12px', paddingTop: '6px' }}>
+              <Icon icon="search" height={24} />
+            </div>
             <UserAvatar />
           </div>
         </Col>
