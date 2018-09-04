@@ -1,18 +1,14 @@
 import React from 'react'
+import { Image } from 'react-bootstrap'
 import './index.css'
 
-export default ({ icon, color, width, height }) => {
-  const svg = require(`!raw-loader!./icons/${icon}.svg`) // eslint-disable-line
-  const size = width || height
-
+export default ({ icon, width, height }) => {
   const style = {
-    display: 'inline-block',
-    color,
-    width: size,
-    height: size
+    width: width || height,
+    height: height || width,
+    objectFit: 'contain'
   }
-
   return (
-    <span className="Icon" style={style} dangerouslySetInnerHTML={{ __html: svg }} />
+    <Image src={`/public/icons/${icon}.svg`} style={style} />
   )
 }
