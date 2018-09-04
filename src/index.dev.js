@@ -2,14 +2,20 @@ import 'react-hot-loader/patch'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.css'
 
+
 const mountPoint = document.getElementById('root')
 
 ReactDOM.render(
-  <AppContainer><App /></AppContainer>,
+  <AppContainer>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </AppContainer>,
   mountPoint
 )
 

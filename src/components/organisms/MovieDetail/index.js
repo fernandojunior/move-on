@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { BrowserView, MobileView } from 'react-device-detect'
 import { Button, Grid, Row, Col } from 'react-bootstrap'
 import MoviePoster from '../../molecules/MoviePoster'
@@ -45,18 +46,18 @@ const MovieContent = ({ movie }) => {
   )
 }
 
-const DesktopDetail = ({ movie, onClose }) => (
+const DesktopDetail = ({ movie }) => (
   <Grid fluid={false} className="DesktopDetail">
     <Row>
       <Col sm={12} md={12} lg={12}>
         <MoviePoster {...movie} width={480} height={720} />
         <div className="Rectangle" />
         <MovieContent movie={movie} />
-        <div className="Close" onClick={() => onClose()}>
-          <a href="#">
+        <div className="Close">
+          <Link to="/">
             <Icon icon="close" />
             <div className="Back"> Voltar </div>
-          </a>
+          </Link>
         </div>
       </Col>
     </Row>
@@ -112,11 +113,15 @@ const MobileDetail = ({ movie }) => {
       <div style={rec2Style} />
       <div style={rec3Style} />
       <MovieContent movie={movie} />
-      <Button style={backStyle} className="Back">Voltar</Button>
+      <Link to="/">
+        <Button style={backStyle} className="Back">
+          Voltar
+        </Button>
+      </Link>
       <div className="Close">
-        <a href="#">
+        <Link to="/">
           <Icon icon="close" />
-        </a>
+        </Link>
       </div>
     </div>
   )
