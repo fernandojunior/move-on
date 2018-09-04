@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { BrowserView, MobileView } from 'react-device-detect'
-import { Grid, Row, Col } from 'react-bootstrap'
+import { Button, Grid, Row, Col } from 'react-bootstrap'
 import MoviePoster from '../../molecules/MoviePoster'
 import Icon from '../../atoms/Icon'
 import './index.css'
@@ -29,16 +30,21 @@ const MovieSynopsis = ({ synopsis }) => (
   </div>
 )
 
-const MovieContent = ({ Title, Year, Runtime, Genre, Plot }) => (
-  <div className="MovieContent">
-    <div className="t1"> { Title } </div>
-    <div className="t6 opacity75" style={{ marginTop: '8px', lineHeight: 1.14 }}>
-      { Year } | { Runtime } | { Genre }
-    </div>
-    <Ratings />
-    <MovieSynopsis synopsis={Plot} />
-  </div>
-)
+const MovieContent = ({ movie }) => {
+  const { Title, Year, Runtime, Genre, Plot } = movie
+  return (
+    (
+      <div className="MovieContent">
+        <div className="t1"> { Title } </div>
+        <div className="t6 opacity75" style={{ marginTop: '8px', lineHeight: 1.14 }}>
+          { Year } | { Runtime } | { Genre }
+        </div>
+        <Ratings />
+        <MovieSynopsis synopsis={Plot} />
+      </div>
+    )
+  )
+}
 
 const DesktopDetail = ({ movie }) => (
   <Grid fluid={false} className="DesktopDetail">
@@ -46,7 +52,13 @@ const DesktopDetail = ({ movie }) => (
       <Col sm={12} md={12} lg={12}>
         <MoviePoster {...movie} width={480} height={720} />
         <div className="Rectangle" />
-        <MovieContent {...movie} />
+        <MovieContent movie={movie} />
+        <div className="Close">
+          <Link to="/">
+            <Icon icon="close" />
+            <div className="Back"> Voltar </div>
+          </Link>
+        </div>
       </Col>
     </Row>
   </Grid>
@@ -56,48 +68,72 @@ const MobileDetail = ({ movie }) => {
   const width = (window.innerWidth > 0) ? window.innerWidth : screen.width // eslint-disable-line
   const height = (window.innerHeight > 0) ? window.innerHeight : screen.height // eslint-disable-line
 
-  const rec1 = {
+  const rec1Style = {
     position: 'absolute',
     bottom: 0,
-    width: '100%',
+    width,
     height: height * (120 / 712),
     background: '#000000'
   }
 
-  const rec2 = {
+  const rec2Style = {
     position: 'absolute',
-    bottom: rec1.height,
-    width: '100%',
+    bottom: rec1Style.height,
+    width,
     height: height * (432 / 712),
     backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000)'
   }
 
-  const rec3 = {
+  const rec3Style = {
     position: 'absolute',
     top: 0,
-    width: '100%',
-    height: height - (rec1.height + rec2.height),
+    width,
+    height: height - (rec1Style.height + rec2Style.height),
     backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0), #000000)'
   }
+
+  const backStyle = {
+    position: 'absolute',
+    bottom: height * 0.07,
+    width: 312,
+    height: 40,
+    borderRadius: '3px',
+    borderStyle: 'none',
+    backgroundColor: 'rgba(255, 255, 255, 0.25)',
+    left: (width / 2) - (312 / 2),
+    margin: '0 auto'
+  }
+
+  backStyle.left = (width / 2) - (backStyle.width / 2)
 
   return (
     <div className="MobileDetail" style={{ width, height }}>
       <MoviePoster {...movie} width={width} height={height} />
-      <div style={rec1} />
-      <div style={rec2} />
-      <div style={rec3} />
-      <MovieContent {...movie} />
+      <div style={rec1Style} />
+      <div style={rec2Style} />
+      <div style={rec3Style} />
+      <MovieContent movie={movie} />
+      <Link to="/">
+        <Button style={backStyle} className="Back">
+          Voltar
+        </Button>
+      </Link>
+      <div className="Close">
+        <Link to="/">
+          <Icon icon="close" />
+        </Link>
+      </div>
     </div>
   )
 }
 
-export default ({ movie }) => (
+export default props => (
   <div className="MovieDetail">
     <BrowserView>
-      <DesktopDetail movie={movie} />
+      <DesktopDetail {...props} />
     </BrowserView>
     <MobileView>
-      <MobileDetail movie={movie} />
+      <MobileDetail {...props} />
     </MobileView>
   </div>
 )
