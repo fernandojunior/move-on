@@ -10,7 +10,7 @@ const Logo = () => (
 )
 
 export default () => (
-  <div className="Header">
+  <div className="NavBar">
     <Grid fluid={false}>
       <Row style={{ display: 'flex', flexWrap: 'wrap' }} className="column">
         <Col xs={6} sm={4}>
