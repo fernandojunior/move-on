@@ -1,8 +1,8 @@
 import React from 'react'
 import { Grid, Row, Col, FormControl } from 'react-bootstrap'
 import './index.css'
-import Search from '../../atoms/Search'
-import CloseIcon from '../../atoms/CloseIcon'
+import Search from './Search'
+import CloseIcon from './CloseIcon'
 
 export default () => (
   <Grid>

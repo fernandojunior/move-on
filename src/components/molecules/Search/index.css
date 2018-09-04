@@ -4,7 +4,7 @@
     height: 32px;
     border-radius: 16px;
     border-color: black;
-    background: url(../../atoms/Icon/icons/search.svg);
+    background: url(/public/icons/search.svg);
     background-position: 97%;
     background-repeat: no-repeat;
     background-color: rgba(255, 255, 255, 0.15);

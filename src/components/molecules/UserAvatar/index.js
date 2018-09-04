@@ -1,11 +1,11 @@
 import React from 'react'
-import ProfileIcon from '../../atoms/Profile'
+import Icon from '../../atoms/Icon'
 import './index.css'
 
 export default ({ showName }) => (
   <div className="UserAvatar" style={{ display: 'inline-block' }}>
     <div style={{ float: 'left' }}>
-      <ProfileIcon />
+      <Icon icon="avatar" width={32} />
     </div>
     { showName && <p className="UserName">Nome do Candidato</p> }
   </div>
