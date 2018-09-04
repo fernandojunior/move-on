@@ -6,7 +6,7 @@ import { findMovieRequest as findMovieRequestAction } from '../reducer/movies/ac
 class MovieListContainer extends Component {
   componentWillMount() {
     const { findMovieRequest } = this.props
-    findMovieRequest({ keyword: '2017' })
+    findMovieRequest()
   }
 
   render() {
