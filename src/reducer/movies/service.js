@@ -22,9 +22,52 @@ export const mockedMovies = [ // eslint-disable-line
   JSON.parse('{"Title":"Harry Potter and the Deathly Hallows: Part 2","Year":"2011","Rated":"PG-13","Released":"15 Jul 2011","Runtime":"130 min","Genre":"Adventure, Drama, Fantasy","Director":"David Yates","Writer":"Steve Kloves (screenplay), J.K. Rowling (novel)","Actors":"Ralph Fiennes, Michael Gambon, Alan Rickman, Daniel Radcliffe","Plot":"Harry, Ron, and Hermione search for Voldemort\'s remaining Horcruxes in their effort to destroy the Dark Lord as the final battle rages on at Hogwarts.","Language":"English","Country":"USA, UK","Awards":"Nominated for 3 Oscars. Another 45 wins & 91 nominations.","Poster":"https://m.media-amazon.com/images/M/MV5BMjIyZGU4YzUtNDkzYi00ZDRhLTljYzctYTMxMDQ4M2E0Y2YxXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_SX300.jpg","Ratings":[{"Source":"Internet Movie Database","Value":"8.1/10"},{"Source":"Rotten Tomatoes","Value":"96%"},{"Source":"Metacritic","Value":"87/100"}],"Metascore":"87","imdbRating":"8.1","imdbVotes":"654,923","imdbID":"tt1201607","Type":"movie","DVD":"11 Nov 2011","BoxOffice":"£381,000,185","Production":"Warner Bros. Pictures","Website":"http://www.HarryPotter.com/","Response":"True"}')
 ]
 
+const tendencyIds = [
+  'tt4154756',
+  'tt0417741',
+  'tt5164184',
+  'tt1219827',
+  'tt0238380',
+  'tt4547194',
+  'tt4975722',
+  'tt0443272',
+  'tt2527336',
+  'tt0081505',
+  'tt1798709',
+  'tt1431045',
+  'tt0848228',
+  'tt0241527',
+  'tt0068646',
+  'tt0119654',
+  'tt1677720',
+  'tt0120737'
+]
+
+const API_URL = 'http://www.omdbapi.com'
+const API_KEY = 'f38702dc'
+
 class MovieService {
-  static async find() {
-    return mockedMovies
+  static async find(options) {
+    if (!('keyword' in (options || {}))) {
+      return MovieService.findByIds(tendencyIds)
+    }
+
+    const { keyword } = options
+
+    const url = `${API_URL}/?s=${keyword}&apikey=${API_KEY}`
+
+    const { Search } = (await (await fetch(url)).json())
+    return Search
+  }
+
+  static async findById({ imdbId }) {
+    const url = `${API_URL}/?i=${imdbId}&apikey=${API_KEY}`
+
+    return (await fetch(url)).json()
+  }
+
+  static async findByIds(ids = []) {
+    return Promise.all(ids.map(id => MovieService.findById({ imdbId: id })))
   }
 }
 
