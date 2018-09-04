@@ -1,13 +1,13 @@
+.DesktopDetail, .DesktopDetail .row, .DesktopDetail div[class*='col'] {
+	padding: 0px !important;
+}
+
 .DesktopDetail {
 	background: black;
 }
 
 .DesktopDetail .row {
 	margin: 0px;
-}
-
-.DesktopDetail, .DesktopDetail div[class*='col'] {
-	padding: 0px;
 }
 
 .DesktopDetail .MovieContent {
@@ -27,6 +27,26 @@
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #000000);
 }
 
+.DesktopDetail .Close {
+	position: absolute;
+	top: 32px;
+	right: 83px;
+}
+
+.DesktopDetail .Back {
+	opacity: 0.75;
+	position: absolute;
+	top: 0px;
+	left: 24px;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	color: #ffffff;
+	letter-spacing: normal;
+}
+
 .MobileDetail {
 	color: white;
 }
@@ -38,6 +58,31 @@
 	margin-right: 6.6%;
 }
 
+.MobileDetail .Close {
+	position: absolute;
+	top: 24px;
+	right: 24px;
+}
+
+.MobileDetail .Back {
+	width: 312px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: rgba(255, 255, 255, 0.25);
+}
+
+.MobileDetail .Back {
+	font-family: Montserrat;
+	font-size: 14px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.43;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	text-decoration: none;
+}
 
 .MovieRatings {
 	margin-top: 20px;

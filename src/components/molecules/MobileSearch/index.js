@@ -4,16 +4,18 @@ import './index.css'
 import Search from './Search'
 import CloseIcon from './CloseIcon'
 
+const searchMessage = 'Que filme você procura?'
+
 export default () => (
   <Grid>
     <Row>
       <Col xs={12} smHidden lgHidden mdHidden className="noPadding">
-        <div id="col1-mobile" className="column">
+        <div id="col1-mobile">
           <FormControl
             id="search-mobile"
-            placeholder="Que filme você procura?"
+            placeholder={searchMessage}
             onFocus={(e) => { e.target.placeholder = '' }}
-            onBlur={(e) => { e.target.placeholder = 'Que filme você procura?' }}
+            onBlur={(e) => { e.target.placeholder = searchMessage }}
           />
           <Search float="left" marginRight="0" marginLeft="9%" />
           <CloseIcon />

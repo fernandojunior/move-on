@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserView } from 'react-device-detect'
+import { isMobile, BrowserView } from 'react-device-detect'
 import { Image } from 'react-bootstrap'
 import './index.css'
 
@@ -26,7 +26,7 @@ class MobilePoster extends Component {
     imageStyle.width = width
     imageStyle.height = height
 
-    if (showInfo && hover) {
+    if (showInfo && hover && !isMobile) {
       imageStyle.opacity = 0.5
       imageStyle.borderadius = '3px'
       imageStyle.backgroundColor = '#000000'

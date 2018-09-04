@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-bootstrap'
-import { isMobile } from 'react-device-detect'
+import { isMobile, BrowserView, MobileView } from 'react-device-detect'
 import MoviePoster from '../../molecules/MoviePoster'
 import './index.css'
 
@@ -30,31 +31,45 @@ const _mock_props = { // eslint-disable-line
   ]
 }
 
-export default class MovieList extends Component{ // eslint-disable-line
+export default () => {
+  const shape = isMobile ? { width: '108px', height: '162px' } : { width: '156px', height: '234px' }
+  const colProps = isMobile ? { className: 'mobile', xs: 4 } : { className: 'desktop', sm: 2, md: 2, lg: 2 }
 
-  render() {
-    const shape = isMobile ? { width: '108px', height: '162px' } : { width: '156px', height: '234px' }
-    const colProps = isMobile ? { className: 'mobile', xs: 4 } : { className: 'desktop', sm: 2, md: 2, lg: 2 }
+  const DesktopMovieLink = ({ movie }) => (
+    <Link to="/movie">
+      <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
+    </Link>
+  )
 
-    const movies = _mock_props.movies.map(movie => (
-      <Col {...colProps} key={Math.floor(Math.random() * 255)}>
-        <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
-      </Col>
-    ))
+  const MobileMovieLink = ({ movie }) => (
+    <Link to="/movie">
+      <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
+    </Link>
+  )
 
-    return (
-      <div className="MovieList">
-        <Grid fluid={false}>
-          <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
-            <Col sm={12}>
-              <div className="t3 opacity50">
-                Tendency
-              </div>
-            </Col>
-            {movies}
-          </Row>
-        </Grid>
-      </div>
-    )
-  }
+  const movies = _mock_props.movies.map(movie => (
+    <Col {...colProps} key={Math.floor(Math.random() * 255)}>
+      <BrowserView>
+        <DesktopMovieLink movie={movie} shape={shape} />
+      </BrowserView>
+      <MobileView>
+        <MobileMovieLink movie={movie} shape={shape} />
+      </MobileView>
+    </Col>
+  ))
+
+  return (
+    <div className="MovieList">
+      <Grid fluid={false}>
+        <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
+          <Col xs={12}>
+            <div className="t3 opacity50">
+              Tendency
+            </div>
+          </Col>
+          {movies}
+        </Row>
+      </Grid>
+    </div>
+  )
 }
