@@ -1,8 +1,8 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
-import App from '.'
+import HomePage from '.'
 
-storiesOf('App', module)
+storiesOf('HomePage', module)
   .add('default', () => (
-    <App />
+    <HomePage />
   ))

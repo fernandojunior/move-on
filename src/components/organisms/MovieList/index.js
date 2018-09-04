@@ -46,6 +46,11 @@ export default class MovieList extends Component{ // eslint-disable-line
       <div className="MovieList">
         <Grid fluid={false}>
           <Row style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <Col sm={12}>
+              <div className="t3 opacity50">
+                Tendency
+              </div>
+            </Col>
             {movies}
           </Row>
         </Grid>
