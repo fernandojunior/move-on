@@ -1,4 +1,5 @@
 import { configure } from '@storybook/react'
+import 'bootstrap/dist/css/bootstrap.css'
 import '../src/index.css'
 
 const req = require.context('../src/components', true, /\.stories\.js$/)
