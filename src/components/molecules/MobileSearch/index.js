@@ -7,7 +7,6 @@ import CloseIcon from '../../atoms/CloseIcon'
 export default () => (
   <Grid>
     <Row>
-
       <Col xs={12} smHidden lgHidden mdHidden className="noPadding">
         <div id="col1-mobile" className="column">
           <FormControl

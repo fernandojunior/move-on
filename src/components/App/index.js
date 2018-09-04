@@ -7,6 +7,7 @@ import './index.css'
 
 const test = () => ( // eslint-disable-line
   <div>
+    <MovieDetail />
     <img src="/public/react.png" alt="React logo" />
     No content here. We only test the build process <spam role="img">😉</spam>
     <Button bsStyle="primary" bsSize="large">test button</Button>
@@ -16,7 +17,6 @@ const test = () => ( // eslint-disable-line
 const App = () => (
   <div className="App">
     <NavBar />
-    <MovieDetail />
     <MovieList />
   </div>
 )
