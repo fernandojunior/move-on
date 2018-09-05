@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-bootstrap'
 import Icon from '../../atoms/Icon'
 import Search from '../../molecules/Search'
@@ -30,7 +31,9 @@ export default (props) => {
           <Col xs={6} smHidden mdHidden lgHidden>
             <div style={{ display: 'inline-block', float: 'right' }}>
               <div className="SearchIcon" style={{ float: 'left', paddingRight: '12px', paddingTop: '6px' }}>
-                <Icon icon="search" height={24} />
+                <Link to="/search/">
+                  <Icon icon="search" height={24} />
+                </Link>
               </div>
               <UserAvatar />
             </div>

@@ -27,24 +27,3 @@
     letter-spacing: normal;
     color: #ffffff;
 }
-
-
-
-.ico {
-    background: url('/public/logo.svg');
-    position: absolute;
-}
-
-#col1-mobile {
-    margin-left: 32px;
-    margin-right:32px;
-}
-
-#rectangle {
-    height: 10px;
-    background-color: red;
-    margin-left:32px;
-    margin-right:32px;
-    
-
-}
