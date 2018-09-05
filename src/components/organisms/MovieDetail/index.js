@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { BrowserView, MobileView } from 'react-device-detect'
 import { Button, Grid, Row, Col } from 'react-bootstrap'
@@ -64,67 +64,96 @@ const DesktopDetail = ({ movie }) => (
   </Grid>
 )
 
-const MobileDetail = ({ movie }) => {
-  const width = (window.innerWidth > 0) ? window.innerWidth : screen.width // eslint-disable-line
-  const height = (window.innerHeight > 0) ? window.innerHeight : screen.height // eslint-disable-line
-
-  const rec1Style = {
-    position: 'absolute',
-    bottom: 0,
-    width,
-    height: height * (120 / 712),
-    background: '#000000'
+class MobileDetail extends Component {
+  componentWillMount() {
+    this.updateDimensions()
   }
 
-  const rec2Style = {
-    position: 'absolute',
-    bottom: rec1Style.height,
-    width,
-    height: height * (432 / 712),
-    backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000)'
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimensions)
   }
 
-  const rec3Style = {
-    position: 'absolute',
-    top: 0,
-    width,
-    height: height - (rec1Style.height + rec2Style.height),
-    backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0), #000000)'
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimensions)
   }
 
-  const backStyle = {
-    position: 'absolute',
-    bottom: height * 0.07,
-    width: 312,
-    height: 40,
-    borderRadius: '3px',
-    borderStyle: 'none',
-    backgroundColor: 'rgba(255, 255, 255, 0.25)',
-    left: (width / 2) - (312 / 2),
-    margin: '0 auto'
+  updateDimensions() {
+    const width = (window.innerWidth > 0) ? window.innerWidth : screen.width // eslint-disable-line
+    const height = (window.innerHeight > 0) ? window.innerHeight : screen.height // eslint-disable-line
+    this.setState({ width, height })
   }
 
-  backStyle.left = (width / 2) - (backStyle.width / 2)
+  render() {
+    const { width, height } = this.state
+    const { movie } = this.props
 
-  return (
-    <div className="MobileDetail" style={{ width, height }}>
-      <MoviePoster {...movie} width={width} height={height} />
-      <div style={rec1Style} />
-      <div style={rec2Style} />
-      <div style={rec3Style} />
-      <MovieContent movie={movie} />
-      <Link to="/">
-        <Button style={backStyle} className="Back">
-          Voltar
-        </Button>
-      </Link>
-      <div className="Close">
+    const rec1Style = {
+      position: 'fixed',
+      bottom: 0,
+      width,
+      height: (height * (120 / 712)),
+      background: '#000000'
+    }
+
+    const rec2Style = {
+      position: 'fixed',
+      bottom: rec1Style.height - 5,
+      width,
+      height: height * (432 / 712),
+      backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000)'
+    }
+
+    const rec3Style = {
+      position: 'fixed',
+      top: 0,
+      width,
+      height: height - (rec1Style.height + rec2Style.height),
+      backgroundImage: 'linear-gradient(to top, rgba(0, 0, 0, 0), #000000)'
+    }
+
+    const backButtonStyle = {
+      position: 'fixed',
+      width: width * (312 / 360),
+      height: 40,
+      borderRadius: '3px',
+      borderStyle: 'none',
+      backgroundColor: 'rgba(255, 255, 255, 0.25)',
+      margin: '0 auto'
+    }
+    backButtonStyle.bottom = rec1Style.height - (rec1Style.height / 2) - (backButtonStyle.height / 2)  // eslint-disable-line
+    backButtonStyle.left = (width / 2) - (backButtonStyle.width / 2)
+
+    const contentStyle = {
+      position: 'fixed',
+      bottom: backButtonStyle.bottom + (backButtonStyle.height + backButtonStyle.height * 0.5),
+      width: backButtonStyle.width,
+      left: backButtonStyle.left,
+      margin: backButtonStyle.margin
+    }
+
+    return (
+      <div className="MobileDetail" style={{ width, height }}>
+        <MoviePoster {...movie} width={width} height={height} />
+
+        <div className="rect3" style={rec3Style} />
+        <div className="rect2" style={rec2Style} />
+        <div className="rect1" style={rec1Style} />
+        <div style={contentStyle}>
+          <MovieContent movie={movie} />
+        </div>
         <Link to="/">
-          <Icon icon="close" />
+          <Button style={backButtonStyle} className="Back">
+            Voltar
+          </Button>
         </Link>
+        <div className="Close">
+          <Link to="/">
+            <Icon icon="close" />
+          </Link>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
 export default props => (
