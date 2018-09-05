@@ -19,7 +19,7 @@ export default (props) => {
   const colProps = isMobile ? { className: 'mobile', xs: 4 } : { className: 'desktop', sm: 2, md: 2, lg: 2 }
 
   const movieViews = (movies || []).map(movie => (
-    <Col {...colProps} key={Math.floor(Math.random() * 255)}>
+    <Col {...colProps} key={movie.imdbID}>
       <Link to={`/movie/${movie.imdbID}`}>
         <MoviePoster {...({ ...movie, ...shape })} showInfo responsive />
       </Link>

@@ -51,13 +51,6 @@
 	color: white;
 }
 
-.MobileDetail .MovieContent {
-	position: absolute;
-	top: 43%;
-	margin-left: 6.6%;
-	margin-right: 6.6%;
-}
-
 .MobileDetail .Close {
 	position: absolute;
 	top: 24px;
