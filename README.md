@@ -17,7 +17,7 @@ To run the webpack dev server:
 npm start
 ```
 
-To run the [storybook](https://github.com/storybooks/storybook) server (a development environment to browse UI components):
+To run the [storybook](https://github.com/storybooks/storybook) server (a development environment to perform sanity test in the components via browse UI):
 ```sh
 npm run storybook
 ```
@@ -31,3 +31,7 @@ To serve the build directory using a Python SimpleHTTPServer:
 ```sh
 npm run serve
 ```
+
+## Author
+
+- Fernando Felix do Nascimento Junior
