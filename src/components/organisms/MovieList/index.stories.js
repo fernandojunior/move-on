@@ -9,3 +9,6 @@ storiesOf('MovieList', module)
   .add('default', () => (
     <MovieList movies={mockedMovies} />
   ))
+  .add('loading', () => (
+    <MovieList movies={[]} />
+  ))

@@ -9,30 +9,34 @@ const Logo = () => (
   <Icon icon="logo" width={128} height={32} />
 )
 
-export default () => (
-  <div className="NavBar">
-    <Grid fluid={false}>
-      <Row style={{ display: 'flex', flexWrap: 'wrap' }} className="column">
-        <Col xs={6} sm={4}>
-          <Logo />
-        </Col>
-        <Col xsHidden sm={4}>
-          <Search />
-        </Col>
-        <Col xsHidden sm={4}>
-          <div style={{ float: 'right' }}>
-            <UserAvatar showName />
-          </div>
-        </Col>
-        <Col xs={6} smHidden mdHidden lgHidden>
-          <div style={{ display: 'inline-block', float: 'right' }}>
-            <div className="SearchIcon" style={{ float: 'left', paddingRight: '12px', paddingTop: '6px' }}>
-              <Icon icon="search" height={24} />
+export default (props) => {
+  const SearchComponent = 'SearchComponent' in props ? props.SearchComponent : Search // eslint-disable-line
+
+  return (
+    <div className="NavBar">
+      <Grid fluid={false}>
+        <Row style={{ display: 'flex', flexWrap: 'wrap' }} className="column">
+          <Col xs={6} sm={4}>
+            <Logo />
+          </Col>
+          <Col xsHidden sm={4}>
+            <SearchComponent />
+          </Col>
+          <Col xsHidden sm={4}>
+            <div style={{ float: 'right' }}>
+              <UserAvatar showName />
             </div>
-            <UserAvatar />
-          </div>
-        </Col>
-      </Row>
-    </Grid>
-  </div>
-)
+          </Col>
+          <Col xs={6} smHidden mdHidden lgHidden>
+            <div style={{ display: 'inline-block', float: 'right' }}>
+              <div className="SearchIcon" style={{ float: 'left', paddingRight: '12px', paddingTop: '6px' }}>
+                <Icon icon="search" height={24} />
+              </div>
+              <UserAvatar />
+            </div>
+          </Col>
+        </Row>
+      </Grid>
+    </div>
+  )
+}
