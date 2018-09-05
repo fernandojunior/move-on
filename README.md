@@ -5,8 +5,8 @@ A very basic React app featuring Babel and HMR. Performs all the nifty optimizat
 ## Installation
 
 ```sh
-git clone https://github.com/fernandojunior/moveon-challange
-cd moveon-challange
+git clone https://fernandojunior@bitbucket.org/fernandojunior/move-on.git
+cd move-on
 npm i
 ```
 
