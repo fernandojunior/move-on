@@ -60,14 +60,14 @@ class MovieService {
     return Search
   }
 
-  static async findById({ imdbId }) {
-    const url = `${API_URL}/?i=${imdbId}&apikey=${API_KEY}`
+  static async findById(id) {
+    const url = `${API_URL}/?i=${id}&apikey=${API_KEY}`
 
     return (await fetch(url)).json()
   }
 
   static async findByIds(ids = []) {
-    return Promise.all(ids.map(id => MovieService.findById({ imdbId: id })))
+    return Promise.all(ids.map(id => MovieService.findById(id)))
   }
 }
 

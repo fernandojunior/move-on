@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MovieList from '../components/organisms/MovieList'
+import MovieDetailContainer from './MovieDetailContainer'
 import { findMovieRequest as findMovieRequestAction } from '../reducer/movies/actions'
 
 class MovieListContainer extends Component {
@@ -14,7 +15,7 @@ class MovieListContainer extends Component {
     const title = (query && query.keyword) || null
 
     return (
-      <MovieList movies={movies} title={title} />
+      <MovieList movies={movies} title={title} MovieDetailComponent={MovieDetailContainer} />
     )
   }
 }
