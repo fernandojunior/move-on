@@ -2,8 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Grid, Row, Col } from 'react-bootstrap'
 import { isMobile } from 'react-device-detect'
+import Icon from '../../atoms/Icon'
 import MoviePoster from '../../molecules/MoviePoster'
 import './index.css'
+
+const LoadingSpinner = () => (
+  <div style={{ width: '50%', margin: 'auto', marginTop: '25%', textAlign: 'center' }}>
+    <Icon icon="load" heigth={96} />
+  </div>
+)
 
 export default (props) => {
   const { movies, title } = props
@@ -28,7 +35,8 @@ export default (props) => {
               {(title || 'Tendency')}
             </div>
           </Col>
-          {movieViews}
+          { movieViews.length > 0 && movieViews }
+          { movieViews.length === 0 && <LoadingSpinner /> }
         </Row>
       </Grid>
     </div>

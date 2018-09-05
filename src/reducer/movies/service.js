@@ -48,7 +48,7 @@ const API_KEY = 'f38702dc'
 
 class MovieService {
   static async find(options) {
-    if (!('keyword' in (options || {}))) {
+    if (!('keyword' in (options || {})) || options.keyword === '') {
       return MovieService.findByIds(tendencyIds)
     }
 
