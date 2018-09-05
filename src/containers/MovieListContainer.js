@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import * as qs from 'query-string'
 import MovieList from '../components/organisms/MovieList'
 import MovieDetailContainer from './MovieDetailContainer'
 import { findMovieRequest as findMovieRequestAction } from '../reducer/movies/actions'
@@ -7,7 +8,14 @@ import { findMovieRequest as findMovieRequestAction } from '../reducer/movies/ac
 class MovieListContainer extends Component {
   componentWillMount() {
     const { findMovieRequest } = this.props
-    findMovieRequest()
+
+    const urlQuery = qs.parse(location.search) // eslint-disable-line
+
+    if ('keyword' in urlQuery) {
+      findMovieRequest(urlQuery)
+    } else {
+      findMovieRequest()
+    }
   }
 
   render() {

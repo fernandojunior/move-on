@@ -25,6 +25,7 @@
     "@storybook/react": "^3.4.10",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^3.3.7",
+    "query-string": "^6.1.0",
     "react": "^15.6.2",
     "react-bootstrap": "^0.32.3",
     "react-device-detect": "^1.5.9",
