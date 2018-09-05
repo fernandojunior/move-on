@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import { configure } from '@storybook/react'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../src/index.css'
